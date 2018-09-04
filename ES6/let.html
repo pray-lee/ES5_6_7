@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>let</title>
+</head>
+<body>
+<button>button</button>
+<button>button</button>
+<button>button</button>
+<script>
+  //let不会预解析，不存在变量提升，有块级作用域，在块级作用域有效，不能重复声明,其他与var类似
+  let btns = document.getElementsByTagName('button')
+  for (let i = 0,len = btns.length; i < len; i++) {
+    btns[i].onclick = function () {
+      alert(i)
+    }
+  }
+
+</script>
+</body>
+</html>
