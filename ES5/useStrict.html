@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>use strict</title>
+</head>
+<body>
+  <script>
+    'use strict'
+    var a = 1  //在严格模式下，必须使用var声明变量，否则会报错。a is not defined.
+
+    function Person (name, age) {
+      this.name = name
+      this.age = age
+    }
+    var p = new Person('kobe', 38)
+    //禁止自定义函数中的this 指向window
+    // Person('kobe', 38), 这样是不行的
+
+    //eval函数本身没有作用域，在严格模式下，会生成自己的作用域
+    var str = 'a'
+    eval('var str = "b";alert(str)')
+    alert(str)
+    //第一次弹出b.第二次弹出a, 说明eval函数执行完成之后并没有污染全局定义的str.
+
+    //严格模式下，对象里禁止有重名的属性
+  </script>
+</body>
+</html>
