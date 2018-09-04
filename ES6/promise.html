@@ -7,20 +7,51 @@
 <body>
 <script>
  //异步操作以同步写法执行，避免回调地狱
- let promise = new Promise((resolve, reject) => {
-  console.log(111)
-  setTimeout(() => {
-    // resolve(333)
-    reject(444)
-  }, 2000)
- })
- console.log(222)
+//  let promise = new Promise((resolve, reject) => {
+//   console.log(111)
+//   setTimeout(() => {
+//     // resolve(333)
+//     reject(444)
+//   }, 2000)
+//  }) 
+//  console.log(222)
 
- promise.then((value) => {
-  console.log(value)
- }, (err) => {
-  console.log(err)
- })
+//  promise.then((value) => {
+//   console.log(value)
+//  }, (err) => {
+//   console.log(err)
+//  })
+
+function getNews(url) {
+  let promise = new Promise((resolve, reject) => {
+    let xmlHttpRequest = new XMLHttpRequest()
+    xmlHttpRequest.onreadystatechange = () => {
+      if(xmlHttpRequest.readyState === 4){
+        if(xmlHttpRequest.status === 200){
+          resolve('{username: "leexiaoyong"}')
+        }else{
+          reject('somethins wrong...')
+        }
+      }
+    }   
+    xmlHttpRequest.open('get', url)
+    xmlHttpRequest.send()
+  }) 
+  return promise
+}
+
+getNews('http://localhost:3000')
+  .then((data) => {
+    console.log(data)
+    return getNews('another url')
+  }, (error) => {
+    console.log(error)
+  })
+  .then((data) => {
+    console.log(data)
+  }, () => {
+
+  })
 </script>
 </body>
 </html>
