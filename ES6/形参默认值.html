@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>形参默认值</title>
+</head>
+<body>
+<script>
+  function foo(x=1, y=2) {
+    console.log(x, y)
+  }
+  foo() //1, 2
+  foo(3) //3, 2
+  foo(3, 4) // 3, 4
+  foo(undefined, 4) //1, 4
+</script>
+</body>
+</html>
