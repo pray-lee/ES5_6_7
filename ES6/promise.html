@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise</title>
+</head>
+<body>
+<script>
+ //异步操作以同步写法执行，避免回调地狱
+ let promise = new Promise((resolve, reject) => {
+  console.log(111)
+  setTimeout(() => {
+    // resolve(333)
+    reject(444)
+  }, 2000)
+ })
+ console.log(222)
+
+ promise.then((value) => {
+  console.log(value)
+ }, (err) => {
+  console.log(err)
+ })
+</script>
+</body>
+</html>
