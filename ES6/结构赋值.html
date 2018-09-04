@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>解构赋值</title>
+</head>
+<body>
+<script>
+  //对象 解构赋值必须写obj里面有的属性才可以
+  let obj = {
+    username: 'leexiaoyong',
+    age: 28
+  }
+  let {username, age} =  obj
+  console.log(username, age)
+
+  //数组
+  let arr = [1, 2, 3, 4, 5]
+  let [a, b, c, d, e] = arr
+  console.log(a, b, c, d ,e)
+
+  //函数形参
+  function test({username, age}) {
+    console.log(username, age)
+  }
+
+  let obj = {username: 'leexiaoyong', age: 28}
+  test(obj)
+
+</script>
+</body>
+</html>
