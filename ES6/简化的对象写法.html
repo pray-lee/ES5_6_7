@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>简化的对象写法</title>
+</head>
+<body>
+<script>
+  let username = 'leexiaoyong',age = 30
+  let obj = {
+    username,
+    age,
+    getName () {
+      return this.username
+    }
+  }
+  console.log(obj.getName())
+</script>
+</body>
+</html>
