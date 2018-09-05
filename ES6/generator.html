@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>generator</title>
+</head>
+<body>
+<script>
+  //生成器，用yield进行流程控制 (和iterator类似)
+  function* generator() {
+    yield '1'
+    yield '2'
+    return 'finish'
+  }
+  let ge = generator()
+  console.log(ge.next())
+  console.log(ge.next())
+  console.log(ge.next())
+</script>
+</body>
+</html>
