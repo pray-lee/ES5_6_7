@@ -20,7 +20,7 @@
 // console.log(c); // 9
 //
 // function f() {
-//   var a = b = c = 9
+//   var a = b = c = 9 // b,c是全局变量
 //   console.log(a); // 9
 //   console.log(b); // 9
 //   console.log(c); // 9
