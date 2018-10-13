@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function *show() {
+      alert('a')
+      let a = yield;
+      alert('b')
+      alert(a)
+    }
+
+    let gen = show()
+
+    gen.next(12) //yield  第一个传参始终是没用的, 没法给yield传参
+    gen.next(5)
+
+
+    //执行到最后一步的时候，value的值默认是undefined,如果想有值，用return 返回一下
+  </script>
+</body>
+</html>
