@@ -1,7 +1,7 @@
 // 读书笔记
 
 // 第一章
-var a = null
+var a = null 
 console.log(Boolean(a))
 // (!a && typeof a === 'object') // true 用复合类型判断当前要判断的对象是不是一个object,因为有可能是Null
 
