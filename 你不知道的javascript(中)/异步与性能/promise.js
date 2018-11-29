@@ -74,7 +74,7 @@
 // })
 // let p7 = p6.then(res => {
 //   console.log(res)
-//   return Promise.resolve(22) //then return任意类型的值，都会被包一层promise.resolve(),例如调用下面的return 22就会变成promise.resolve(22)
+//   return Promise.resolve(22) //then return任意类型的值，都会被包一层promise.resolve(),例如调用下面的return 22就会变成 return Promise.resolve(22)
 //   // return 22
 // })
 // console.log(Object.prototype.toString.call(p7), '...') // promise, 调用then方法之后也是返回Promise
@@ -84,16 +84,16 @@
 
 // *******************************************************************************************
 // try catch捕获错误只能用于同步代码，不能用于异步代码
-// function foo() {
-//   setTimeout( () => {
-//     baz.bar()
-//   }, 100 )
-// }
-// try{
-//   foo()
-//   //从这里抛出全局错误
-// }
-// catch(err){
-//   //代码不会走到这里
-//   console.log(`${err}hahahah`)
-// }
+function foo() {
+  setTimeout( () => {
+    baz.bar()
+  }, 100 )
+}
+try{
+  foo()
+  //从这里抛出全局错误
+}
+catch(err){
+  //代码不会走到这里
+  console.log(`${err}hahahah`)
+}
