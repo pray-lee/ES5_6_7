@@ -84,16 +84,16 @@
 
 // *******************************************************************************************
 // try catch捕获错误只能用于同步代码，不能用于异步代码
-function foo() {
-  setTimeout( () => {
-    baz.bar()
-  }, 100 )
-}
-try{
-  foo()
-  //从这里抛出全局错误
-}
-catch(err){
-  //代码不会走到这里
-  console.log(`${err}hahahah`)
-}
+// function foo() {
+//   setTimeout( () => {
+//     baz.bar()
+//   }, 100 )
+// }
+// try{
+//   foo()
+//   //从这里抛出全局错误
+// }
+// catch(err){
+//   //代码不会走到这里
+//   console.log(`${err}hahahah`)
+// }
