@@ -84,16 +84,63 @@
 
 // *******************************************************************************************
 // try catch捕获错误只能用于同步代码，不能用于异步代码
-function foo() {
-  setTimeout( () => {
-    baz.bar()
-  }, 100 )
+// function foo() {
+//   setTimeout( () => {
+//     baz.bar()
+//   }, 100 )
+// }
+// try{
+//   foo()
+//   //从这里抛出全局错误
+// }
+// catch(err){
+//   //代码不会走到这里
+//   console.log(`${err}hahahah`)
+// }
+
+//promise实现demo
+ // let p = new Promise(function (resolve, reject) {
+//    resolve();
+//    reject()
+//  })
+
+function MyPromise (excutor) {
+  this.state = 'pending'
+  this.value = null
+  this.err = null
+  // define task arr
+  this.resolveCallbacks = []
+  this.rejectCallbacks = []
+  // define resolve
+  function resolve (value) {
+    this.state = 'fullfilled'
+    this.value = value
+    this.resolveCallbacks.forEach(item => {
+      item(this.value)
+    })
+  }
+  // define reject
+  function reject (err) {
+    this.state = 'rejected'
+    this.err = err
+    this.rejectCallbacks.forEach(item => {
+      item(this.err)
+    })
+  }
+  // promise is working when created
+  excutor(resolve, reject)
 }
-try{
-  foo()
-  //从这里抛出全局错误
-}
-catch(err){
-  //代码不会走到这里
-  console.log(`${err}hahahah`)
+// then func
+MyPromise.prototype.then = function (success, error) {
+  if(this.state === 'pending') {
+    // do nothing
+    this.resolveCallbacks.push(success)
+    this.rejectCallbacks.push(error)
+  }
+  if (this.state === 'fullfilled')  {
+    success(this.value)
+  }
+  if (this.state === 'rejected')  {
+    error(this.err)
+  }
 }
